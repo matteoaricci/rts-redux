@@ -13,9 +13,10 @@ const SearchResults = ({ results }) => {
             padding: "10px",
           }}
         >
-          <h2>Title: {result.title}</h2>
+          <h2>
+            <a href={result.url}>Title: {result.title}</a>
+          </h2>
           <h3>Author: {result.author}</h3>
-          <a href={result.url}>Go to Source</a>
         </div>
       ))}
     </div>
