@@ -31,9 +31,20 @@
     transform: translateY(0);
   }
   50% {
-    transform: translateY(10px)
+    transform: translateY(10px);
   }
   100% {
-    transform: translateY(0px)
+    transform: translateY(0px);
   }
+}
+
+.results-container {
+  width: 55%;
+}
+
+.previous-search {
+  position: fixed;
+  width: 30%;
+  top: 45px;
+  right: 10%;
 }

@@ -1,5 +1,5 @@
 const addSearch = () => {
-    return {
-        type: 'ADD_SEARCH'
-    }
-}
+  return {
+    type: "ADD_SEARCH",
+  };
+};
