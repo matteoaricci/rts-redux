@@ -1,15 +1,16 @@
 import React, { useState } from "react";
-// import { Counter } from './features/counter/Counter';
 import "./App.css";
+import { useSelector, connect } from "react-redux";
 import SearchForm from "./components/SearchForm";
 import SearchResults from "./components/SearchResults";
 
 const API_URL = "http://hn.algolia.com/api/v1/search?query=";
 
-function App() {
+const App = (props) => {
   // state for handling the search form, and the results from the fetch call
   const [search, setSearch] = useState("");
   const [results, setResults] = useState([]);
+  // const res = useSelector((state) => console.log(state));
 
   // callback function for fetching data from api and setting it in state
   const handleFormSubmit = (e) => {
@@ -19,6 +20,7 @@ function App() {
       .then((resp) => resp.json())
       .then((news) => {
         setResults(news.hits);
+        props.dispatch({ type: "ADD_SEARCH", payload: search });
         setSearch("");
       });
   };
@@ -33,6 +35,12 @@ function App() {
       <SearchResults results={results} />
     </div>
   );
-}
+};
 
-export default App;
+const mapDispatchToProps = (dispatch) => {
+  return {
+    addSearch: (search) => dispatch({ type: "ADD_SEARCH", payload: search }),
+  };
+};
+
+export default connect(mapDispatchToProps)(App);
